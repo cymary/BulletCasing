@@ -5,8 +5,8 @@ Reformat {
  format "1920 1080 0 0 1920 1080 1 HD_1080"
  name Reformat2
  selected true
- xpos -9
- ypos 840
+ xpos -14
+ ypos 836
 }
 push 0
 Axis3 {
@@ -40,13 +40,13 @@ Group {
  addUserKnob {26 line_bulletCasing l "Bullet Casing"}
  addUserKnob {4 mode l Mode M {"0\tDefult" "1\tBullet Look Dev" "2\tElement Mode" ""}}
  addUserKnob {26 ReferenceGeo l "Reference Geo"}
+ addUserKnob {6 ref_bullet l Bullet -STARTLINE}
+ ref_bullet true
  addUserKnob {6 ref_human l Human -STARTLINE}
- ref_human true
  addUserKnob {6 ref_gun l Gun -STARTLINE}
- ref_gun true
  addUserKnob {6 ref_ground l Ground -STARTLINE}
  ref_ground true
- addUserKnob {6 ref_other l Other -STARTLINE}
+ addUserKnob {6 ref_extra l "Extra Collision Geo" -STARTLINE}
  addUserKnob {26 ""}
  addUserKnob {41 start_frame l "start at" T ParticleEmitter1.start_frame}
  addUserKnob {41 sFrame l "Selected Frame" T FireOnFrames.sFrame}
@@ -772,6 +772,22 @@ push 0
   xpos -374
   ypos -218
  }
+ Constant {
+  inputs 0
+  channels {rgba.red -rgba.green rgba.blue}
+  color 1
+  name Constant4
+  xpos -2009
+  ypos -1553
+ }
+ Shuffle2 {
+  fromInput1 {{0} B}
+  fromInput2 {{0} B}
+  mappings "4 rgba.red 0 0 rgba.red 0 0 rgba.green 0 1 rgba.green 0 1 rgba.blue 0 2 rgba.blue 0 2 white -1 -1 rgba.alpha 0 3"
+  name Shuffle9
+  xpos -2009
+  ypos -1469
+ }
 push $N5991b400
 push 0
 push $N56922400
@@ -861,6 +877,13 @@ add_layer {S S.red S.green S.blue S.alpha}
   xpos -2085
   ypos -1438
  }
+ Switch {
+  inputs 2
+  which {{ref_bullet}}
+  name Switch3
+  xpos -2009
+  ypos -1429
+ }
  Cylinder {
   inputs 0
   display wireframe
@@ -869,7 +892,6 @@ add_layer {S S.red S.green S.blue S.alpha}
   close_bottom true
   name Cylinder4
   label "semi auto"
-  selected true
   xpos -1721
   ypos -2216
  }
@@ -1786,7 +1808,7 @@ push $N5e551c00
 push 0
  ParticleEmitter {
   inputs 3
-  start_frame 986
+  start_frame 985
   emit_from faces
   rate {{parent.FireOnFrames.switch}}
   lifetime 300
@@ -1904,7 +1926,7 @@ push $Nba58d800
 push 0
  Switch {
   inputs 2
-  which 1
+  which {{ref_gun}}
   name MM_ref_Gun_sw
   xpos 2171
   ypos -942
@@ -2000,6 +2022,7 @@ push $Nfaacec00
   xpos 1167
   ypos -73
  }
+set N1c159000 [stack 0]
  Dot {
   name Dot27
   xpos 1189
@@ -2202,7 +2225,6 @@ push $N1c159400
   xpos -640
   ypos 1024
  }
-set Ndf4db400 [stack 0]
  Output {
   name Output1
   xpos -640
@@ -2331,16 +2353,14 @@ push 0
   xpos 1674
   ypos -1239
  }
-push $Ndf4db400
+push $N1c159000
  Viewer {
-  frame 1047
+  frame 1049
   frame_range 1001-1050
-  frame_range_lock true
-  gamma 2.25
   monitorOutOutputTransform rec709
   name Viewer1
-  xpos 1510
-  ypos -85
+  xpos -1815
+  ypos -1507
  }
 end_group
 Dot {
@@ -2348,4 +2368,12 @@ Dot {
  selected true
  xpos -167
  ypos 1030
+}
+Viewer {
+ frame_range 1001-1050
+ monitorOutOutputTransform rec709
+ name Viewer1
+ selected true
+ xpos -189
+ ypos 1072
 }
