@@ -1,75 +1,58 @@
 set cut_paste_input [stack 0]
-version 13.2 v1
-Card2 {
+version 14.0 v3
+Reformat {
  inputs 0
- render_mode textured+wireframe
- cast_shadow false
- receive_shadow false
- rows 30
- columns 30
- rotate {90 0 0}
- uniform_scale 1200
- control_points {3 3 3 6 
-
-1 {-0.5 -0.5 0} 0 {0.1666666865 0 0} 0 {0 0 0} 0 {0 0.1666666865 0} 0 {0 0 0} 0 {0 0 0} 
-1 {0 -0.5 0} 0 {0.1666666716 0 0} 0 {-0.1666666716 0 0} 0 {0 0.1666666865 0} 0 {0 0 0} 0 {0.5 0 0} 
-1 {0.5 -0.5 0} 0 {0 0 0} 0 {-0.1666666865 0 0} 0 {0 0.1666666865 0} 0 {0 0 0} 0 {1 0 0} 
-1 {-0.5 0 0} 0 {0.1666666865 0 0} 0 {0 0 0} 0 {0 0.1666666716 0} 0 {0 -0.1666666716 0} 0 {0 0.5 0} 
-1 {0 0 0} 0 {0.1666666716 0 0} 0 {-0.1666666716 0 0} 0 {0 0.1666666716 0} 0 {0 -0.1666666716 0} 0 {0.5 0.5 0} 
-1 {0.5 0 0} 0 {0 0 0} 0 {-0.1666666865 0 0} 0 {0 0.1666666716 0} 0 {0 -0.1666666716 0} 0 {1 0.5 0} 
-1 {-0.5 0.5 0} 0 {0.1666666865 0 0} 0 {0 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {0 1 0} 
-1 {0 0.5 0} 0 {0.1666666716 0 0} 0 {-0.1666666716 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {0.5 1 0} 
-1 {0.5 0.5 0} 0 {0 0 0} 0 {-0.1666666865 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {1 1 0} }
- name Card2
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ name Reformat2
  selected true
- xpos 3723
- ypos -310
+ xpos -9
+ ypos 840
 }
+push 0
 Axis3 {
  inputs 0
- translate {{curve x1001 -76.19999695 x1015 45.19999695 x1021 -11 x1026 -11 x1032 70.5 -122.5} {curve x1001 149 x1015 149 x1021 149 x1026 149 x1032 149 149} {curve x1001 5.199999809 x1015 5.199999809 x1021 66 x1026 -68 x1032 47 47}}
- name Gun_Location1
+ translate {-39.91862106 153.0261688 26.17895699}
+ rotate {-20 30 0}
+ name Gun_Location4
  selected true
- xpos 3432
- ypos -330
-}
-Dot {
- name Dot1
- selected true
- xpos 3603
- ypos -318
+ xpos -179
+ ypos 671
 }
 push $cut_paste_input
 Camera3 {
- translate {0 120 923}
- name Camera1
+ translate {0 150 1183}
+ rotate {-3 0 0}
+ name Camera4
  selected true
- xpos 3418
- ypos -219
+ xpos -359
+ ypos 821
 }
 Group {
- inputs 3
- name Bullet_Casing
+ inputs 4
+ name Bullet_Casing3
  tile_color 0x5f875fff
+ label v1.0
+ note_font "Verdana Bold"
  selected true
- xpos 3581
- ypos -198
+ xpos -189
+ ypos 836
  addUserKnob {20 settingTab l Setting}
+ addUserKnob {26 line_bulletCasing l "Bullet Casing"}
  addUserKnob {4 mode l Mode M {"0\tDefult" "1\tBullet Look Dev" "2\tElement Mode" ""}}
+ addUserKnob {26 ReferenceGeo l "Reference Geo"}
  addUserKnob {6 ref_human l Human -STARTLINE}
  ref_human true
  addUserKnob {6 ref_gun l Gun -STARTLINE}
  ref_gun true
  addUserKnob {6 ref_ground l Ground -STARTLINE}
  ref_ground true
+ addUserKnob {6 ref_other l Other -STARTLINE}
  addUserKnob {26 ""}
+ addUserKnob {41 start_frame l "start at" T ParticleEmitter1.start_frame}
  addUserKnob {41 sFrame l "Selected Frame" T FireOnFrames.sFrame}
  addUserKnob {41 setFrame l "Set Frame" -STARTLINE T FireOnFrames.setFrame}
  addUserKnob {41 switch T FireOnFrames.switch}
  addUserKnob {26 ""}
- addUserKnob {20 particle_collision_geo l "Collision Geo" n 1}
- particle_collision_geo 0
- addUserKnob {20 endGroup_3 l endGroup n -1}
  addUserKnob {20 light_muzzle l "Muzzle Light" n 1}
  light_muzzle 0
  addUserKnob {41 color_1 l color T GunFire.color}
@@ -77,28 +60,51 @@ Group {
  addUserKnob {41 intensity_1 l intensity T GunFire.intensity}
  addUserKnob {20 endGroup_1 l endGroup n -1}
  addUserKnob {20 light_skyfill l "Sky Fill Light" n 1}
+ light_skyfill 0
  addUserKnob {41 color T Sky_Fill01.color}
  addUserKnob {41 intensity T Sky_Fill01.intensity}
  addUserKnob {20 endGroup n -1}
  addUserKnob {20 scanline_render l Render n 1}
- scanline_render 0
- addUserKnob {41 format l "output format" T Reformat4.format}
  addUserKnob {41 samples T ScanlineRender3.samples}
  addUserKnob {41 shutter T ScanlineRender3.shutter}
  addUserKnob {20 endGroup_2 l endGroup n -1}
+ addUserKnob {26 "" +STARTLINE}
+ addUserKnob {26 Info l "Info        " T "BulletCasing v1.0\n+ Look dev mode is for Bullet Look dev \n+ Element mode is for Source element, camera not moving , just take the bullet casing for source element \n\n\n\nTun-En.Chen / cymary@gmail.com"}
+ addUserKnob {20 collision_ground l Collision_Geo}
+ addUserKnob {26 "" +STARTLINE}
+ addUserKnob {20 group_collision_ground l Ground n 1}
+ group_collision_ground 0
+ addUserKnob {6 active_Ground l Active +STARTLINE}
+ active_Ground true
+ addUserKnob {26 line_CollisionGeo_Ground l CollisionGeo_Ground}
+ addUserKnob {41 object T ParticleBounce1_MMCamera.object}
+ addUserKnob {22 Show_Geo l "Show CollisionGeo" T "groupnode = nuke.thisNode()\ngroupnode.begin()\nnode = nuke.toNode('ParticleBounce1_MMCamera')\n\nif node.isSelected()==True:\n    node.setSelected(False)\n\nelif node.isSelected()==False:\n    node.setSelected(True)\n\n\n\ngroupnode.end()" +STARTLINE}
+ addUserKnob {41 bounceaxis_file_menu l @FolderIcon T ParticleBounce1_MMCamera.bounceaxis_file_menu}
+ addUserKnob {41 bounceaxis_snap_menu l @AxisIcon -STARTLINE T ParticleBounce1_MMCamera.bounceaxis_snap_menu}
+ addUserKnob {41 bounceaxis_xform_order l "transform order" T ParticleBounce1_MMCamera.bounceaxis_xform_order}
+ addUserKnob {41 bounceaxis_rot_order l "rotation order" T ParticleBounce1_MMCamera.bounceaxis_rot_order}
+ addUserKnob {41 bounceaxis_translate l translate T ParticleBounce1_MMCamera.bounceaxis_translate}
+ addUserKnob {41 bounceaxis_rotate l rotate T ParticleBounce1_MMCamera.bounceaxis_rotate}
+ addUserKnob {41 bounceaxis_scaling l scale T ParticleBounce1_MMCamera.bounceaxis_scaling}
+ addUserKnob {41 bounceaxis_uniform_scale l "uniform scale" T ParticleBounce1_MMCamera.bounceaxis_uniform_scale}
+ addUserKnob {41 bounceaxis_skew l skew T ParticleBounce1_MMCamera.bounceaxis_skew}
+ addUserKnob {41 bounceaxis_pivot_translate l "pivot translate" T ParticleBounce1_MMCamera.bounceaxis_pivot_translate}
+ addUserKnob {41 bounceaxis_pivot_rotate l "pivot rotate" T ParticleBounce1_MMCamera.bounceaxis_pivot_rotate}
+ addUserKnob {20 endGroup_3 l endGroup n -1}
+ addUserKnob {20 "" l "Local Matrix" n 2}
+ addUserKnob {41 bounceaxis_useMatrix l "Specify Matrix" T ParticleBounce2_Element.bounceaxis_useMatrix}
+ addUserKnob {41 bounceaxis_matrix l "" -STARTLINE T ParticleBounce2_Element.bounceaxis_matrix}
+ addUserKnob {20 "" n -1}
+ addUserKnob {26 "" +STARTLINE}
+ addUserKnob {20 collision_group_customInput l "Collision Geo Input" n 1}
+ collision_group_customInput 0
+ addUserKnob {6 active_CustomInput l Active +STARTLINE}
+ addUserKnob {20 endGroup_4 l endGroup n -1}
+ addUserKnob {26 "" +STARTLINE}
  addUserKnob {20 lookdev l "Bullet Look Dev"}
+ addUserKnob {4 bulletType l "Bullet Type" M {"0\tHand Gun" "1\tRiffle Gun" ""}}
  addUserKnob {20 elementMode l "Element Mode"}
- addUserKnob {26 ElementCamera l "Element Camera"}
- addUserKnob {41 read_from_file_link l "read from file" T E_Camera3.read_from_file_link}
- addUserKnob {41 file_link l file T E_Camera3.file_link}
- addUserKnob {41 reload_link T E_Camera3.reload_link}
- addUserKnob {26 ""}
- addUserKnob {41 display T E_Camera3.display}
- addUserKnob {41 selectable T E_Camera3.selectable}
- addUserKnob {41 transform T E_Camera3.transform}
- addUserKnob {41 file_menu l @FolderIcon T E_Camera3.file_menu}
- addUserKnob {41 snap_menu l @AxisIcon T E_Camera3.snap_menu}
- addUserKnob {41 xform_order l "transform order" T E_Camera3.xform_order}
+ addUserKnob {26 _1 l CAMERA}
  addUserKnob {41 rot_order l "rotation order" T E_Camera3.rot_order}
  addUserKnob {41 translate T E_Camera3.translate}
  addUserKnob {41 rotate T E_Camera3.rotate}
@@ -107,13 +113,16 @@ Group {
  addUserKnob {41 skew T E_Camera3.skew}
  addUserKnob {41 pivot_translate l "pivot translate" T E_Camera3.pivot_translate}
  addUserKnob {41 pivot_rotate l "pivot rotate" T E_Camera3.pivot_rotate}
- addUserKnob {20 "" l "Local matrix" n 2}
- addUserKnob {41 useMatrix l "specify matrix" T E_Camera3.useMatrix}
+ addUserKnob {41 bounceaxis_ T ParticleBounce2_Element.bounceaxis_}
+ addUserKnob {20 "" l "Local Matrix" n 2}
+ addUserKnob {41 useMatrix l "Specify Matrix" T E_Camera3.useMatrix}
  addUserKnob {41 matrix l "" -STARTLINE T E_Camera3.matrix}
  addUserKnob {20 "" n -1}
  addUserKnob {20 "" l "World matrix" n 2}
  addUserKnob {41 world_matrix l "" -STARTLINE T E_Camera3.world_matrix}
  addUserKnob {20 "" n -1}
+ addUserKnob {26 "" +STARTLINE}
+ addUserKnob {41 overscan T ScanlineRender2.overscan}
 }
  BackdropNode {
   inputs 0
@@ -145,10 +154,10 @@ Group {
   tile_color 0x666666ff
   label "Ref Human"
   note_font_size 42
-  xpos 1881
+  xpos 2361
   ypos -1360
-  bdwidth 344
-  bdheight 361
+  bdwidth 1061
+  bdheight 382
  }
  BackdropNode {
   inputs 0
@@ -156,7 +165,7 @@ Group {
   tile_color 0x4c3b4cff
   label "GUN LOCATION"
   note_font_size 42
-  xpos 3202
+  xpos 3682
   ypos -1374
   bdwidth 429
   bdheight 273
@@ -233,7 +242,7 @@ Group {
   tile_color 0x666666ff
   label "ref Gun"
   note_font_size 42
-  xpos 1599
+  xpos 2079
   ypos -1360
   bdwidth 256
   bdheight 364
@@ -244,7 +253,7 @@ Group {
   tile_color 0x388e8e00
   label "fake reflection"
   note_font_size 42
-  xpos 1641
+  xpos 2121
   ypos -229
   bdwidth 316
   bdheight 306
@@ -266,8 +275,19 @@ Group {
   tile_color 0x666666ff
   label "ref Ground"
   note_font_size 42
-  xpos 1336
-  ypos -1364
+  xpos 1803
+  ypos -1397
+  bdwidth 256
+  bdheight 364
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode4
+  tile_color 0x666666ff
+  label "Custom Input"
+  note_font_size 42
+  xpos 1457
+  ypos -1393
   bdwidth 256
   bdheight 364
  }
@@ -277,7 +297,7 @@ Group {
   tile_color 0x484848ff
   label "Top Fill"
   note_font_size 42
-  xpos 2646
+  xpos 3126
   ypos -879
   bdwidth 251
   bdheight 316
@@ -288,8 +308,8 @@ Group {
   tile_color 0x8e388e00
   label "fire frame control"
   note_font_size 42
-  xpos 1295
-  ypos -863
+  xpos 615
+  ypos -787
   bdwidth 385
   bdheight 170
  }
@@ -299,7 +319,7 @@ Group {
   tile_color 0x555555ff
   label "Muzzle Light"
   note_font_size 42
-  xpos 2937
+  xpos 3417
   ypos -871
   bdwidth 309
   bdheight 308
@@ -333,7 +353,7 @@ Group {
   xpos -2639
   ypos -2146
  }
- set C676d5000 [stack 0]
+ set Cc7bfc400 [stack 0]
  Dot {
   name Dot24
   xpos -2617
@@ -348,7 +368,7 @@ Group {
   xpos -2639
   ypos -1895
  }
-clone $C676d5000 {
+clone $Cc7bfc400 {
   inputs 0
   xpos -2107
   ypos -2278
@@ -359,7 +379,7 @@ clone $C676d5000 {
   xpos -2085
   ypos -2203
  }
-set N6768b400 [stack 0]
+set Nc7bfdc00 [stack 0]
  Noise {
   zoffset 3
   center {960 540}
@@ -375,7 +395,7 @@ set N6768b400 [stack 0]
   xpos -2201
   ypos -1980
  }
-set N6768ac00 [stack 0]
+set N56922400 [stack 0]
  Grade {
   channels rgba
   blackpoint 0.08
@@ -384,7 +404,7 @@ set N6768ac00 [stack 0]
   xpos -2278
   ypos -1923
  }
-push $N6768b400
+push $Nc7bfdc00
  Noise {
   size {60 1}
   center {960 540}
@@ -397,7 +417,7 @@ push $N6768b400
   xpos -2085
   ypos -2057
  }
-set N6768a000 [stack 0]
+set N56923000 [stack 0]
  Dot {
   name Dot3
   xpos -2489
@@ -421,7 +441,7 @@ set N6768a000 [stack 0]
   xpos -2737
   ypos -2286
  }
-clone $C676d5000 {
+clone $Cc7bfc400 {
   xpos -2737
   ypos -2174
   selected false
@@ -431,7 +451,7 @@ clone $C676d5000 {
   xpos -2715
   ypos -2089
  }
-set N67688800 [stack 0]
+set Nc756c800 [stack 0]
  Merge2 {
   inputs 2
   operation multiply
@@ -460,7 +480,7 @@ set N67688800 [stack 0]
   xpos -2511
   ypos -1873
  }
-push $N67688800
+push $Nc756c800
  Grade {
   white 0.055
   name Grade5
@@ -488,7 +508,7 @@ push $N67688800
   xpos -2737
   ypos -1716
  }
-set N6762e400 [stack 0]
+set N5991a800 [stack 0]
  Dot {
   name Dot5
   label SPEC
@@ -502,13 +522,13 @@ set N6762e400 [stack 0]
   xpos -2737
   ypos -1550
  }
- set C6762dc00 [stack 0]
+ set C5991b000 [stack 0]
  Dot {
   name Dot4
   xpos -2715
   ypos -1497
  }
-set N6762d800 [stack 0]
+set N5991b400 [stack 0]
  Reformat {
   resize distort
   name Reformat2
@@ -521,7 +541,7 @@ set N6762d800 [stack 0]
   translate {0 90 1023}
   name E_Camera3
   xpos -827
-  ypos -40
+  ypos -9
  }
  Dot {
   name Dot33
@@ -586,13 +606,13 @@ push 0
   xpos -328
   ypos -1029
  }
-set N67bc2800 [stack 0]
+set Nba58c000 [stack 0]
  Constant {
   inputs 0
   channels rgb
   color 0.18
   name Constant5
-  xpos 1977
+  xpos 2457
   ypos -1454
  }
 push 0
@@ -601,16 +621,16 @@ push 0
   diffuse 0.06499999762
   specular 0.065
   name Phong2
-  xpos 1977
+  xpos 2457
   ypos -1255
  }
-set N67bc1c00 [stack 0]
+set Nba58c800 [stack 0]
  Dot {
   name Dot14
-  xpos 1715
+  xpos 2195
   ypos -1264
  }
-set N67bc1800 [stack 0]
+set Nba58cc00 [stack 0]
  Cube {
   rows 4
   columns 4
@@ -618,26 +638,26 @@ set N67bc1800 [stack 0]
   scaling {3.9 7.6 1.5}
   skew {-23.2 0 0}
   name Cube1
-  xpos 1655
+  xpos 2135
   ypos -1211
  }
-push $N67bc1800
+push $Nba58cc00
  Cube {
   rows 4
   columns 4
   translate {-3.960000038 2.560000181 0}
   scaling {15 2.6 2.2}
   name Cube2
-  xpos 1744
+  xpos 2224
   ypos -1209
  }
  Scene {
   inputs 2
   name Scene1
-  xpos 1701
-  ypos -1152
+  xpos 2181
+  ypos -1153
  }
-set N67bc0c00 [stack 0]
+set Nba58d800 [stack 0]
  TransformGeo {
   inputs 2
   rotate {0 90 0}
@@ -752,15 +772,15 @@ push 0
   xpos -374
   ypos -218
  }
-push $N6762d800
+push $N5991b400
 push 0
-push $N6768ac00
+push $N56922400
  Grade {
   name Grade6
   xpos -2201
   ypos -1898
  }
-push $N6768a000
+push $N56923000
  Grade {
   white 0.155
   name Grade7
@@ -774,7 +794,7 @@ push $N6768a000
   xpos -2107
   ypos -1898
  }
-push $N67688800
+push $Nc756c800
  Grade {
   white 0.18
   name Grade13
@@ -805,12 +825,12 @@ add_layer {Diffuse Diffuse.red Diffuse.green Diffuse.blue Diffuse.alpha}
   xpos -2085
   ypos -1638
  }
-clone $C6762dc00 {
+clone $C5991b000 {
   xpos -2107
   ypos -1585
   selected false
  }
-push $N6762e400
+push $N5991a800
 add_layer {S S.red S.green S.blue S.alpha}
  Shuffle2 {
   fromInput1 {{0} B}
@@ -849,8 +869,9 @@ add_layer {S S.red S.green S.blue S.alpha}
   close_bottom true
   name Cylinder4
   label "semi auto"
+  selected true
   xpos -1721
-  ypos -2219
+  ypos -2216
  }
  TransformGeo {
   translate {0 1 0}
@@ -920,6 +941,7 @@ add_layer {S S.red S.green S.blue S.alpha}
  }
  Switch {
   inputs 2
+  which {{bulletType}}
   name Switch2
   xpos -1904
   ypos -1934
@@ -930,19 +952,19 @@ add_layer {S S.red S.green S.blue S.alpha}
   xpos -1904
   ypos -1429
  }
-set N7f276c00 [stack 0]
+set Nc40ca800 [stack 0]
  Dot {
   name Dot29
   xpos -793
   ypos -1438
  }
-set N7f276800 [stack 0]
+set Nc40cac00 [stack 0]
  Dot {
   name Dot30
   xpos -793
   ypos -796
  }
-push $N67bc2800
+push $Nba58c000
  Constant {
   inputs 0
   channels {rgba.red -rgba.green -rgba.blue none}
@@ -1048,8 +1070,7 @@ push 0
   in_bounce 0.25
   in_friction 0.1
   bounceaxis_uniform_scale 500
-  name ParticleBounce2
-  selected true
+  name ParticleBounce2_Element
   xpos -640
   ypos -524
  }
@@ -1057,7 +1078,7 @@ push 0
   steps_per_frame 10
   name ParticleSettings2
   xpos -640
-  ypos -443
+  ypos -444
  }
  Scene {
   inputs 4
@@ -1065,18 +1086,24 @@ push 0
   xpos -630
   ypos -122
  }
- Reformat {
+ Input {
   inputs 0
-  format "2048 1080 0 0 2048 1080 1 2K_DCP"
-  name Reformat4
-  xpos -499
-  ypos -37
+  name BG
+  xpos -1391
+  ypos -474
+  number 3
  }
- set C7f202800 [stack 0]
+ Dot {
+  name Dot40
+  xpos -1369
+  ypos -416
+ }
+set Nfaacec00 [stack 0]
  ScanlineRender {
   inputs 3
   conservative_shader_sampling false
   antialiasing high
+  overscan 300
   stochastic_samples {{samples}}
   motion_vectors_type distance
   name ScanlineRender2
@@ -1088,13 +1115,13 @@ push 0
   xpos -618
   ypos 307
  }
-set N7f201c00 [stack 0]
+set Nfaacf400 [stack 0]
  Dot {
   name Dot36
   xpos -480
   ypos 307
  }
-set N7f201800 [stack 0]
+set Nfaacf800 [stack 0]
  Shuffle2 {
   fromInput1 {{0} B}
   in1 S
@@ -1143,7 +1170,7 @@ set N7f201800 [stack 0]
   xpos -286
   ypos 269
  }
-push $N7f201800
+push $Nfaacf800
  Gizmo {
   inputs 2
   name Gizmo3
@@ -1256,7 +1283,7 @@ add_layer {N N.red N.green N.blue N.alpha}
   xpos -264
   ypos 554
  }
-push $N7f201c00
+push $Nfaacf400
  Merge2 {
   inputs 2
   operation plus
@@ -1311,7 +1338,7 @@ push $N7f201c00
   xpos -2135
   ypos -458
  }
-push $N7f276c00
+push $Nc40ca800
  TransformGeo {
   inputs 2
   pivot_translate {0 0 1}
@@ -1325,12 +1352,7 @@ push $N7f276c00
   xpos -1894
   ypos -218
  }
-clone $C7f202800 {
-  inputs 0
-  xpos -1757
-  ypos -143
-  selected false
- }
+push $Nfaacec00
  ScanlineRender {
   inputs 3
   conservative_shader_sampling false
@@ -1340,7 +1362,7 @@ clone $C7f202800 {
   xpos -1904
   ypos -39
  }
-set N7f115000 [stack 0]
+set N3e5c8c00 [stack 0]
  Dot {
   name Dot26
   xpos -1625
@@ -1351,7 +1373,7 @@ set N7f115000 [stack 0]
   xpos -1515
   ypos -48
  }
-set N7f114800 [stack 0]
+set N3e5c9400 [stack 0]
  Shuffle2 {
   fromInput1 {{0} B}
   in1 S
@@ -1400,7 +1422,7 @@ set N7f114800 [stack 0]
   xpos -1321
   ypos -86
  }
-push $N7f114800
+push $N3e5c9400
  Gizmo {
   inputs 2
   name Gizmo1
@@ -1512,7 +1534,7 @@ push $N7f114800
   xpos -1299
   ypos 199
  }
-push $N7f115000
+push $N3e5c8c00
  Merge2 {
   inputs 2
   operation plus
@@ -1545,7 +1567,7 @@ push $N7f115000
   translate {600 600 600}
   depthmap_slope_bias 0.01
   name Sky_Fill03
-  xpos 2823
+  xpos 3303
   ypos -632
  }
  Light3 {
@@ -1555,7 +1577,7 @@ push $N7f115000
   translate {600 600 -600}
   depthmap_slope_bias 0.01
   name Sky_Fill02
-  xpos 2810
+  xpos 3290
   ypos -811
  }
  Light3 {
@@ -1566,7 +1588,7 @@ push $N7f115000
   depthmap_slope_bias 0.01
   name Sky_Fill01
   tile_color 0x55bfffff
-  xpos 2652
+  xpos 3132
   ypos -813
  }
  Light3 {
@@ -1576,13 +1598,13 @@ push $N7f115000
   translate {-600 600 600}
   depthmap_slope_bias 0.01
   name Sky_Fill04
-  xpos 2655
+  xpos 3135
   ypos -635
  }
  Scene {
   inputs 4
   name Scene6
-  xpos 2735
+  xpos 3215
   ypos -728
  }
 push 0
@@ -1590,42 +1612,42 @@ push 0
   inputs 2
   which 1
   name MM_Fill_sw
-  xpos 2725
+  xpos 3205
   ypos -516
  }
  Input {
   inputs 0
   name GUN
-  xpos 3362
+  xpos 3842
   ypos -1308
   number 1
  }
  Dot {
   name Dot11
-  xpos 3384
+  xpos 3864
   ypos -1175
  }
  Dot {
   name Dot8
-  xpos 3384
+  xpos 3864
   ypos -1068
  }
-set N7f3cf800 [stack 0]
+set N5e551800 [stack 0]
  Dot {
   name Dot12
-  xpos 3384
+  xpos 3864
   ypos -908
  }
-set N7f3cf400 [stack 0]
+set N5e551c00 [stack 0]
  Dot {
   name Dot13
-  xpos 3384
+  xpos 3864
   ypos -740
  }
  Axis3 {
   translate {0 2.5 18}
   name Axis3
-  xpos 3224
+  xpos 3704
   ypos -752
  }
  Light3 {
@@ -1635,126 +1657,67 @@ set N7f3cf400 [stack 0]
   depthmap_slope_bias 0.01
   name GunFire
   tile_color 0xff5f00ff
-  xpos 3064
+  xpos 3544
   ypos -752
   addUserKnob {20 User}
   addUserKnob {7 light_gain l "Light Gain"}
-  light_gain 10000
+  light_gain 25000
  }
 push 0
  Switch {
   inputs 2
   which 1
   name MM_Key_sw
-  xpos 3054
+  xpos 3534
   ypos -512
  }
  Dot {
   name Dot15
-  xpos 3076
+  xpos 3556
   ypos -430
  }
  Scene {
   inputs 2
   name Scene5
-  xpos 2735
+  xpos 3215
   ypos -442
  }
  Dot {
   name Dot10
-  xpos 2747
+  xpos 3227
   ypos -284
- }
-push 0
-push $N67bc1c00
- ReadGeo2 {
-  file X:/00_assets/3D/model/human/01_lowPoly_human/FBXs/Body_low.fbx
-  read_on_each_frame true
-  name ReadGeo1
-  xpos 1977
-  ypos -1190
- }
-push 0
- Switch {
-  inputs 2
-  which {{ref_human}}
-  name MM_ref_Human_sw
-  xpos 1977
-  ypos -946
- }
- Dot {
-  name Dot7
-  xpos 1999
-  ypos -444
- }
-push $N7f3cf800
- Dot {
-  name Dot41
-  xpos 1843
-  ypos -1068
- }
-push $N67bc0c00
- TransformGeo {
-  inputs 2
-  rotate {0 90 0}
-  name TransformGeo1
-  xpos 1691
-  ypos -1003
- }
-push 0
- Switch {
-  inputs 2
-  which 1
-  name MM_ref_Gun_sw
-  xpos 1691
-  ypos -938
- }
- Dot {
-  name Dot6
-  xpos 1713
-  ypos -563
  }
  Wireframe {
   inputs 0
-  line_width 0.21
-  line_color 0
-  name Wireframe1
-  xpos 1339
-  ypos -1184
+  name Wireframe3
+  xpos 1433
+  ypos -1201
  }
  Input {
   inputs 0
-  name Collision_Geo
-  xpos 1460
-  ypos -1423
+  name Extra_Collision_Geo
+  xpos 1551
+  ypos -1323
   number 2
  }
  ApplyMaterial {
   inputs 2
-  name ApplyMaterial2
-  xpos 1460
-  ypos -1184
- }
-push 0
- Switch {
-  inputs 2
-  which {{ref_ground}}
-  name MM_ref_Ground_sw
-  xpos 1460
-  ypos -942
+  name ApplyMaterial5
+  xpos 1551
+  ypos -1201
  }
  Dot {
-  name Dot39
-  xpos 1482
-  ypos -587
+  name Dot45
+  xpos 1573
+  ypos -1157
  }
- Scene {
-  inputs 3
-  name Scene3
-  xpos 1547
-  ypos -456
+set Ne079a800 [stack 0]
+ Dot {
+  name Dot46
+  xpos 1573
+  ypos -538
  }
-push $N7f276800
+push $Nc40cac00
  Dot {
   name Dot9
   xpos 1019
@@ -1765,7 +1728,7 @@ push $N7f276800
   xpos 1019
   ypos -854
  }
-push $N7f3cf400
+push $N5e551c00
  Constant {
   inputs 0
   channels {rgba.red -rgba.green -rgba.blue none}
@@ -1823,7 +1786,7 @@ push $N7f3cf400
 push 0
  ParticleEmitter {
   inputs 3
-  start_frame 990
+  start_frame 986
   emit_from faces
   rate {{parent.FireOnFrames.switch}}
   lifetime 300
@@ -1870,30 +1833,163 @@ push 0
   out_bounce 0
   in_bounce 0.25
   in_friction 0.1
-  bounceaxis_uniform_scale 500
-  name ParticleBounce1
+  bounceaxis_uniform_scale 1000
+  name ParticleBounce1_MMCamera
   xpos 1167
-  ypos -583
+  ypos -599
+  disable {{disable_Ground}}
  }
-set N7f32a000 [stack 0]
+ ParticleBounce {
+  inputs 2
+  out_bounce 0
+  in_bounce 0.25
+  in_friction 0.1
+  object input
+  name ParticleBounce1_forCustomInput
+  label "for Custom Input"
+  xpos 1167
+  ypos -541
+  disable {{disable_CustomInput}}
+ }
  ParticleSettings {
   steps_per_frame 5
   name ParticleSettings1
   xpos 1167
-  ypos -501
+  ypos -409
  }
+push $Ne079a800
+push 0
+ Switch {
+  inputs 2
+  which {{ref_other}}
+  name MM_ref_Ground_sw1
+  xpos 1645
+  ypos -586
+ }
+push $Nba58c800
+ ReadGeo2 {
+  file X:/00_assets/3D/model/human/01_lowPoly_human/FBXs/Body_low.fbx
+  read_on_each_frame true
+  name ReadGeo1
+  xpos 2457
+  ypos -1193
+ }
+push 0
+ Switch {
+  inputs 2
+  which {{ref_human}}
+  name MM_ref_Human_sw
+  xpos 2457
+  ypos -946
+ }
+ Dot {
+  name Dot7
+  xpos 2479
+  ypos -444
+ }
+push $N5e551800
+ Dot {
+  name Dot41
+  xpos 2323
+  ypos -1068
+ }
+push $Nba58d800
+ TransformGeo {
+  inputs 2
+  rotate {0 90 0}
+  name TransformGeo1
+  xpos 2171
+  ypos -1003
+ }
+push 0
+ Switch {
+  inputs 2
+  which 1
+  name MM_ref_Gun_sw
+  xpos 2171
+  ypos -942
+ }
+ Dot {
+  name Dot6
+  xpos 2193
+  ypos -563
+ }
+ Wireframe {
+  inputs 0
+  operation "see through"
+  line_width 0.21
+  line_color 0
+  name Wireframe1
+  xpos 1830
+  ypos -1184
+ }
+ Card2 {
+  inputs 0
+  render_mode textured+wireframe
+  cast_shadow false
+  receive_shadow false
+  rows 5
+  columns 5
+  translate {{parent.ParticleBounce1_MMCamera.bounceaxis_translate} {parent.ParticleBounce1_MMCamera.bounceaxis_translate} {parent.ParticleBounce1_MMCamera.bounceaxis_translate}}
+  rotate {{parent.ParticleBounce1_MMCamera.bounceaxis_rotate-90} {parent.ParticleBounce1_MMCamera.bounceaxis_rotate} {parent.ParticleBounce1_MMCamera.bounceaxis_rotate}}
+  scaling {{parent.ParticleBounce1_MMCamera.bounceaxis_scaling} {parent.ParticleBounce1_MMCamera.bounceaxis_scaling} {parent.ParticleBounce1_MMCamera.bounceaxis_scaling}}
+  uniform_scale {{parent.ParticleBounce1_MMCamera.bounceaxis_uniform_scale}}
+  skew {{parent.ParticleBounce1_MMCamera.bounceaxis_skew} {parent.ParticleBounce1_MMCamera.bounceaxis_skew} {parent.ParticleBounce1_MMCamera.bounceaxis_skew}}
+  pivot_translate {{parent.ParticleBounce1_MMCamera.bounceaxis_pivot_translate} {parent.ParticleBounce1_MMCamera.bounceaxis_pivot_translate} {parent.ParticleBounce1_MMCamera.bounceaxis_pivot_translate}}
+  pivot_rotate {{parent.ParticleBounce1_MMCamera.bounceaxis_pivot_rotate} {parent.ParticleBounce1_MMCamera.bounceaxis_pivot_rotate} {parent.ParticleBounce1_MMCamera.bounceaxis_pivot_rotate}}
+  control_points {3 3 3 6 
+
+1 {-0.5 -0.5 0} 0 {0.1666666865 0 0} 0 {0 0 0} 0 {0 0.1666666865 0} 0 {0 0 0} 0 {0 0 0} 
+1 {0 -0.5 0} 0 {0.1666666716 0 0} 0 {-0.1666666716 0 0} 0 {0 0.1666666865 0} 0 {0 0 0} 0 {0.5 0 0} 
+1 {0.5 -0.5 0} 0 {0 0 0} 0 {-0.1666666865 0 0} 0 {0 0.1666666865 0} 0 {0 0 0} 0 {1 0 0} 
+1 {-0.5 0 0} 0 {0.1666666865 0 0} 0 {0 0 0} 0 {0 0.1666666716 0} 0 {0 -0.1666666716 0} 0 {0 0.5 0} 
+1 {0 0 0} 0 {0.1666666716 0 0} 0 {-0.1666666716 0 0} 0 {0 0.1666666716 0} 0 {0 -0.1666666716 0} 0 {0.5 0.5 0} 
+1 {0.5 0 0} 0 {0 0 0} 0 {-0.1666666865 0 0} 0 {0 0.1666666716 0} 0 {0 -0.1666666716 0} 0 {1 0.5 0} 
+1 {-0.5 0.5 0} 0 {0.1666666865 0 0} 0 {0 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {0 1 0} 
+1 {0 0.5 0} 0 {0.1666666716 0 0} 0 {-0.1666666716 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {0.5 1 0} 
+1 {0.5 0.5 0} 0 {0 0 0} 0 {-0.1666666865 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {1 1 0} }
+  name Card2
+  xpos 1940
+  ypos -1326
+ }
+ ApplyMaterial {
+  inputs 2
+  name ApplyMaterial2
+  xpos 1940
+  ypos -1184
+ }
+push 0
+ Switch {
+  inputs 2
+  which {{ref_ground}}
+  name MM_ref_Ground_sw
+  xpos 1940
+  ypos -960
+ }
+ Dot {
+  name Dot44
+  xpos 1962
+  ypos -874
+ }
+ Dot {
+  name Dot39
+  xpos 1962
+  ypos -587
+ }
+ Scene {
+  inputs 4
+  name Scene3
+  xpos 2028
+  ypos -456
+ }
+push 0
  Scene {
   inputs 4
   name Scene7
   xpos 1177
   ypos -296
  }
-clone $C7f202800 {
-  inputs 0
-  xpos 1374
-  ypos -162
-  selected false
- }
+push $Nfaacec00
  ScanlineRender {
   inputs 3
   conservative_shader_sampling false
@@ -1909,66 +2005,66 @@ clone $C7f202800 {
   xpos 1189
   ypos 43
  }
-set N7f328800 [stack 0]
+set N1c159400 [stack 0]
  Dot {
   name Dot32
-  xpos 1574
+  xpos 2054
   ypos 43
  }
-set N7f328400 [stack 0]
+set N1c159800 [stack 0]
  Shuffle2 {
   fromInput1 {{0} B}
   in1 S
   fromInput2 {{0} B}
   mappings "4 S.red 0 0 rgba.red 0 0 S.green 0 1 rgba.green 0 1 S.blue 0 2 rgba.blue 0 2 S.alpha 0 3 rgba.alpha 0 3"
   name Shuffle5
-  xpos 1552
+  xpos 2032
   ypos 106
  }
  Blur {
   size 3
   name Blur3
-  xpos 1552
+  xpos 2032
   ypos 143
  }
  Grade {
   blackpoint 0.003
   whitepoint 0.92
   name Grade10
-  xpos 1662
+  xpos 2142
   ypos 148
   disable true
  }
  Reformat {
   inputs 0
   name Reformat5
-  xpos 1768
+  xpos 2248
   ypos -100
  }
  FrameHold {
   firstFrame 1060
   name FrameHold2
-  xpos 1768
+  xpos 2248
   ypos -76
   disable true
  }
  Blur {
   size {350 37}
   name Blur4
-  xpos 1768
+  xpos 2248
   ypos -29
  }
  Grade {
   white 4
   name Grade11
-  xpos 1768
+  xpos 2248
   ypos 5
  }
-push $N7f328400
+push $N1c159800
  Group {
   inputs 2
   name Gizmo2
-  xpos 1768
+  xpos 2248
   ypos 52
  }
   Input {
@@ -2068,15 +2164,15 @@ push $N7f328400
   inputs 2
   operation multiply
   name Merge9
-  xpos 1768
+  xpos 2248
   ypos 148
  }
  Dot {
   name Dot34
-  xpos 1790
+  xpos 2270
   ypos 290
  }
-push $N7f328800
+push $N1c159400
  Merge2 {
   inputs 2
   operation plus
@@ -2085,40 +2181,171 @@ push $N7f328800
   ypos 299
   disable true
  }
+ VectorBlur2 {
+  uv motion
+  scale 1
+  soft_lines true
+  name VectorBlur1
+  xpos 1167
+  ypos 387
+  disable true
+ }
  Dot {
   name Dot21
   xpos 1189
-  ypos 349
+  ypos 455
  }
  Switch {
   inputs 3
   which {{mode}}
   name Switch1
-  xpos -649
-  ypos 1011
+  xpos -640
+  ypos 1024
  }
+set Ndf4db400 [stack 0]
  Output {
   name Output1
-  xpos -649
-  ypos 1107
+  xpos -640
+  ypos 1121
+ }
+ Noise {
+  inputs 0
+  center {960 540}
+  name Noise4
+  xpos -1452
+  ypos -1071
+ }
+ AddMix {
+  inputs 0
+  name AddMix1
+  xpos -59
+  ypos 5
+ }
+push $Nba58c800
+ Sphere {
+  inputs 0
+  rows 10
+  columns 10
+  translate {-0.5999088287 70.19999695 -5.960464478e-08}
+  scaling {19 45 12}
+  pivot_translate {0 -1 0}
+  pivot_rotate {0 1 0}
+  name Sphere3
+  xpos 2859
+  ypos -1404
+ }
+ Sphere {
+  inputs 0
+  rows 10
+  columns 10
+  translate {17.59157944 0 0}
+  scaling {3 50 3}
+  pivot_translate {0 -1 0}
+  pivot_rotate {0 1 0}
+  name Sphere1
+  xpos 2653
+  ypos -1404
+ }
+ Sphere {
+  inputs 0
+  rows 10
+  columns 10
+  translate {-16.4777832 0 -5.960464478e-08}
+  scaling {3 50 3}
+  pivot_translate {0 -1 0}
+  pivot_rotate {0 1 0}
+  name Sphere2
+  xpos 2765
+  ypos -1399
+ }
+push 0
+ Sphere {
+  inputs 0
+  rows 10
+  columns 10
+  translate {-5.807845116 148.3999939 4.492424353e-07}
+  rotate {90 -90 0}
+  scaling {3 32 3}
+  pivot_translate {0 -1 0}
+  pivot_rotate {0 1 0}
+  name Sphere4
+  xpos 2965
+  ypos -1401
+ }
+ Sphere {
+  inputs 0
+  rows 10
+  columns 10
+  translate {7.53027153 148.4000244 1.707961559}
+  rotate {-90 -90 0}
+  scaling {3 32 3}
+  pivot_translate {0 -1 0}
+  pivot_rotate {0 1 0}
+  name Sphere5
+  xpos 3072
+  ypos -1401
+ }
+ Sphere {
+  inputs 0
+  translate {0 168.0412598 5.175969124}
+  rotate {-20 0 0}
+  scaling {1 1.5 1}
+  uniform_scale 8
+  name Sphere6
+  xpos 3212
+  ypos -1404
+ }
+ Scene {
+  inputs 7
+  name Scene4
+  xpos 2891
+  ypos -1270
+ }
+ ApplyMaterial {
+  inputs 2
+  name ApplyMaterial3
+  xpos 2881
+  ypos -1173
  }
  NoOp {
   inputs 0
   name FireOnFrames
-  xpos 1358
-  ypos -783
+  xpos 739
+  ypos -707
   addUserKnob {20 User}
   addUserKnob {1 sFrame l "Selected Frame"}
-  sFrame 1010,1020,1030,1040
+  sFrame 1010,1020,1030,1050
   addUserKnob {22 setFrame l "Set Frame" -STARTLINE T "node = nuke.thisNode() \nframeList = node\['sFrame'].getValue().split(',') \nprint (frameList) \ntcl_expression = \"||\".join(\[\"frame==\{\}\".format(x) for x in frameList]) + \"?1:0\" \nprint(tcl_expression) \nnode\['switch'].setExpression(tcl_expression)"}
   addUserKnob {7 switch}
-  switch {{frame==1010||frame==1020||frame==1030||frame==1040?1:0}}
+  switch {{frame==1010||frame==1020||frame==1030||frame==1050?1:0}}
  }
-push $N7f32a000
+ CheckerBoard2 {
+  inputs 0
+  name CheckerBoard1
+  xpos 1682
+  ypos -1352
+ }
+ Sphere {
+  uniform_scale 10
+  name Sphere7
+  xpos 1674
+  ypos -1239
+ }
+push $Ndf4db400
  Viewer {
-  frame_range 1001-1080
+  frame 1047
+  frame_range 1001-1050
+  frame_range_lock true
+  gamma 2.25
+  monitorOutOutputTransform rec709
   name Viewer1
-  xpos -1131
-  ypos 1181
+  xpos 1510
+  ypos -85
  }
 end_group
+Dot {
+ name Dot7
+ selected true
+ xpos -167
+ ypos 1030
+}
